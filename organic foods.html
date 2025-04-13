@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Exploring the Different Types of Coffee</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #3e2723;
+            background-image: url('explore background.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth; /* Smooth scrolling */
+        }
+        header {
+            background-color: #5d4037;
+            color: #f4f4f4;
+            text-align: center;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        section {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            color: #3e2723;
+        }
+        h2 {
+            color: #5d4037;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            transition: color 0.3s ease;
+        }
+        h2:hover {
+            color: #d7ccc8;
+        }
+        p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        .coffee-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .coffee-type {b
+            text-align: center;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            padding: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .coffee-type:hover {
+            transform: scale(1.05);
+            background-color: rgba(93, 64, 55, 0.1);
+        }
+        .coffee-type img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .coffee-type img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+        .price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #d84315;
+            transition: color 0.3s ease;
+        }
+        .price:hover {
+            color: #ff6f00;
+        }
+        .stars {
+            display: inline-block;
+            color: #ffca28;
+            font-size: 1.1rem;
+        }
+        .stars:hover {
+            color: #ffd740;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #5d4037;
+            color: #f4f4f4;
+        }
+        footer p {
+            margin: 0;
+        }
+        .back-to-top, .back-to-home {
+            position: fixed;
+            bottom: 20px;
+            background-color: #5d4037;
+            color: #f4f4f4;
+            padding: 10px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            display: none;
+            transition: background-color 0.3s ease, opacity 0.3s ease;
+        }
+        .back-to-top:hover, .back-to-home:hover {
+            background-color: #d7ccc8;
+        }
+        .back-to-top {
+            right: 20px;
+        }
+        .back-to-home {
+            right: 70px;
+        }
+        /* Back-to-top button fade in/out effect */
+        .back-to-top.show, .back-to-home.show {
+            display: block;
+            opacity: 1;
+        }
+        .back-to-top.hide, .back-to-home.hide {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>organic food</h1>
+    </header>
+
+    <!-- Organic Foods Section -->
+<section class="organic-foods">
+    <h2></h2>
+    <div class="foods-grid">
+        <div class="menu-item" onclick="alert('Organic Salad: $7.50')">
+            <h3>Organic Salad</h3>
+            <img src="organic salad.jpeg" alt="Organic Salad" class="menu-image">
+            <p>Fresh mixed greens with organic vegetables and a light vinaigrette.</p>
+            <div class="price">$7.50</div>
+            <div class="rating">★★★★★</div>
+        </div>
+        <div class="menu-item" onclick="alert('Organic Avocado Toast: $5.50')">
+            <h3>Organic Avocado Toast</h3>
+            <img src="avocado toast.jpeg" alt="Organic Avocado Toast" class="menu-image">
+            <p>Whole grain toast topped with ripe avocado and a sprinkle of salt.</p>
+            <div class="price">$5.50</div>
+            <div class="rating">★★★★☆</div>
+        </div>
+        <div class="menu-item" onclick="alert('Organic Granola: $4.00')">
+            <h3>Organic Granola</h3>
+            <img src="granola.jpeg" alt="Organic Granola" class="menu-image">
+            <p>Homemade organic granola served with yogurt and fresh fruit.</p>
+            <div class="price">$4.00</div>
+            <div class="rating">★★★★★</div>
+        </div>
+        <div class="menu-item" onclick="alert('Organic Fruit Bowl: $6.00')">
+            <h3>Organic Fruit Bowl</h3>
+            <img src="fruit bowl.jpeg" alt="Organic Fruit Bowl" class="menu-image">
+            <p>A vibrant mix of seasonal organic fruits.</p>
+            <div class="price">$6.00</div>
+            <div class="rating">★★★★☆</div>
+        </div>
+        <div class="menu-item" onclick="alert('Organic Smoothie: $5.00')">
+            <h3>Organic Smoothie</h3>
+            <img src="smoothie.jpeg" alt="Organic Smoothie" class="menu-image">
+            <p>Delicious and refreshing smoothie made with organic fruits.</p>
+            <div class="price">$5.00</div>
+            <div class="rating">★★★★☆</div>
+        </div>
+    </div>
+
+    <!-- Link to Previous Page -->
+    <div class="previous-page-link">
+        <p>
+            <a href="snacks and pastries.html" style="text-decoration: none; color: #d84315;">&larr; Back to Previous Page</a>
+        </p>
+    </div>
+</section>
+
+<style>
+    /* Background and styling for the Organic Foods section */
+    .organic-foods {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        margin: 2rem auto;
+        max-width: 1000px;
+        text-align: center;
+    }
+    .organic-foods h2 {
+        color: #3e2723;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+    .foods-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2rem;
+    }
+    .menu-item {
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 8px;
+        padding: 1rem;
+        width: 200px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
+    }
+    .menu-item:hover {
+        transform: scale(1.05);
+    }
+    .menu-image {
+        width: 150px;
+        height: auto;
+        border-radius: 8px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 1rem;
+    }
+    .price {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #d84315;
+        margin-top: 0.5rem;
+    }
+    .rating {
+        font-size: 1.2rem;
+        color: #ffcc00;
+        margin-top: 0.5rem;
+    }
+    .previous-page-link {
+        margin-top: 2rem;
+        font-size: 1.2rem;
+    }
+</style>
+
+<script>
+    // Optional JavaScript for future interactivity
+    document.querySelectorAll('.menu-item').forEach(item => {
+        item.addEventListener('click', function() {
+            console.log(`You clicked on ${item.querySelector('h3').innerText}`);
+        });
+    });
+</script>
+
+    
+    

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Exploring the Different Types of Coffee</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #3e2723;
+            background-image: url('explore background.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth; /* Smooth scrolling */
+        }
+        header {
+            background-color: #5d4037;
+            color: #f4f4f4;
+            text-align: center;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        section {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            color: #3e2723;
+        }
+        h2 {
+            color: #5d4037;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            transition: color 0.3s ease;
+        }
+        h2:hover {
+            color: #d7ccc8;
+        }
+        p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        .coffee-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem; /* Reduced gap for a tighter layout */
+            justify-items: center; /* Center the content */
+        }
+        .menu-item {
+            text-align: center;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            padding: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .menu-item:hover {
+            transform: scale(1.05);
+            background-color: rgba(93, 64, 55, 0.1);
+        }
+        .menu-item img {
+            width: 150px; /* Set fixed width for the images */
+            height: 100px; /* Set fixed height */
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .menu-item img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+        .price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #d84315;
+            transition: color 0.3s ease;
+        }
+        .price:hover {
+            color: #ff6f00;
+        }
+        .rating {
+            font-size: 1.2rem;
+            color: #ffcc00;
+            margin-top: 0.5rem;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #5d4037;
+            color: #f4f4f4;
+        }
+        footer p {
+            margin: 0;
+        }
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin: 2rem auto;
+            padding: 1rem;
+            max-width: 1000px;
+        }
+        .page-navigation a {
+            background-color: #5d4037;
+            color: #f4f4f4;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        .page-navigation a:hover {
+            background-color: #d7ccc8;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Snacks and Pastries</h1>
+    </header>
+
+<!-- Snacks & Pastries Section -->
+<section>
+    <div class="coffee-grid">
+        <div class="menu-item" onclick="alert('Croissant: $2.50')">
+            <h3>Croissant</h3>
+            <img src="croissants.jpeg" alt="Croissant" class="menu-image">
+            <p>Flaky, buttery croissant, perfect for pairing with coffee.</p>
+            <div class="price">$2.50</div>
+            <div class="rating">★★★★★</div>
+        </div>
+        <div class="menu-item" onclick="alert('Muffin: $2.00')">
+            <h3>Muffin</h3>
+            <img src="muffins.jpeg" alt="Muffin" class="menu-image">
+            <p>Freshly baked muffins, soft and flavorful, available in blueberry and chocolate chip.</p>
+            <div class="price">$2.00</div>
+            <div class="rating">★★★★☆</div>
+        </div>
+        <div class="menu-item" onclick="alert('Scone: $2.80')">
+            <h3>Scone</h3>
+            <img src="scones.jpeg" alt="Scone" class="menu-image">
+            <p>Delicious scones, available in flavors like cranberry-orange and almond.</p>
+            <div class="price">$2.80</div>
+            <div class="rating">★★★★☆</div>
+        </div>
+        <div class="menu-item" onclick="alert('Brownie: $3.00')">
+            <h3>Brownie</h3>
+            <img src="brownies.jpeg" alt="Brownie" class="menu-image">
+            <p>Rich and fudgy brownie, a perfect treat for chocolate lovers.</p>
+            <div class="price">$3.00</div>
+            <div class="rating">★★★★★</div>
+        </div>
+        <div class="menu-item" onclick="alert('Cookies: $1.50')">
+            <h3>Cookies</h3>
+            <img src="cookies.jpeg" alt="Cookies" class="menu-image">
+            <p>Chewy cookies available in chocolate chip, oatmeal raisin, and more.</p>
+            <div class="price">$1.50</div>
+            <div class="rating">★★★★☆</div>
+        </div>
+        <div class="menu-item" onclick="alert('Danish: $3.50')">
+            <h3>Danish</h3>
+            <img src="danish.jpeg" alt="Danish" class="menu-image">
+            <p>Sweet and flaky Danish pastries, filled with cream cheese or fruit.</p>
+            <div class="price">$3.50</div>
+            <div class="rating">★★★★☆</div>
+        </div>
+    </div>
+</section>
+
+<!-- Next and Previous Page Buttons -->
+<div class="page-navigation">
+    <a href="explore.html">Previous Page</a>
+    <a href="organic foods.html">Next Page</a>
+</div>
+
+<script>
+    document.querySelectorAll('.menu-item').forEach(item => {
+        item.addEventListener('click', function() {
+            console.log(`You clicked on ${item.querySelector('h3').innerText}`);
+        });
+    });
+</script>
+
+</body>
+</html>

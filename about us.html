@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olivion Coffee Shop</title>
+    <link rel="stylesheet" type="text/css" href="CSS/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Flamenco&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<header>
+    <nav class="row clearfix">
+        <img src="img/coffeelogo.png" alt="logo" class="logo" />
+        <ul class="main-nav animate__animated animate__slideInDown" id="check-class">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="#">Coffee Delivery</a></li>
+            <li><a href="#">Sign Up</a></li>
+        </ul>
+        <a href="#" class="mobile-icon" onClick="slideShow()"><i class="fa fa-bars"></i></a>
+    </nav>
+    <div class="main-content-header">
+        <h1>Welcome To <span class="colorchange">Olivion Coffee Shop</span>.<br>
+        House of Lovely Taste</h1>
+
+        <a href="#" class="btn btn-full">Click to Order</a>
+        <a href="#" class="btn btn-half">Show More</a>
+    </div>
+</header>
+
+<section id="about">
+    <div>
+        <h2 class="title-text">About Us</h2>
+    </div>
+    <div class="about-center">
+        <article class="about first">
+            <div class="about-icon">
+                <i class="fa fa-beer"></i>
+            </div>
+            <div class="about-text">
+                <h2 class="about-subtitle">our passion for coffee</h2>
+                <p class="about-info">Our journey began with a simple passion for coffee. 
+                   We source the finest beans from around the world, ensuring that each cup is crafted with care.
+                   Whether you prefer a rich espresso, a smooth latte, or a refreshing cold brew, 
+                   our expert baristas are dedicated to making your experience unforgettable.</p>
+            </div>
+        </article>
+        <article class="about second">
+            <div class="about-icon">
+                <i class="fa fa-cutlery"></i>
+            </div>
+            <div class="about-text">
+                <h2 class="about-subtitle">More than Just Coffee</h2>
+                <p class="about-info">While coffee is at the heart of what we do, our menu also includes a variety of 
+                   healthy food options. From freshly baked goods to wholesome snacks and organic food, there’s something 
+                   for everyone. We believe in nourishing not just your body but also your soul..</p>
+            </div>
+        </article>
+        <article class="about third">
+            <div class="about-icon">
+                <i class="fa fa-leaf"></i>
+            </div>
+            <div class="about-text">
+                <h2 class="about-subtitle">A Cozy Atmosphere</h2>
+                <p class="about-info">esigned with comfort in mind, our shop features a warm and inviting atmosphere, 
+                   perfect for catching up with friends, studying, or simply enjoying a moment of solitude. 
+                   With cozy seating, free Wi-Fi, and a selection of delicious pastries, we aim to create the 
+                   ideal space for our customers.</p>
+            </div>
+        </article>
+    </div>
+</section>
+
+<section class="menu" id="menu">
+    <article class="menu-image"></article>
+    <article class="menu-text">
+        <div class="menu-text-center">
+            <h1>Our Menu</h1>
+            <p>Coffee Beverages,
+               Snacks & Pastries,
+               Specialty Drinks,
+               organic foods.</p>
+            <a href="explore.html">Explore</a>
+        </div>
+    </article>
+</section>
+
+<section id="social-icons">
+    <a href="#"><i class="fa fa-facebook facebook"></i></a>
+    <a href="#"><i class="fa fa-twitter twitter"></i></a>
+    <a href="#"><i class="fa fa-instagram instagram"></i></a>
+    <a href="#"><i class="fa fa-google-plus google-plus"></i></a>
+</section>
+
+<footer>
+    <p>&copy; 2024 Olivion Coffee Shop. All Rights Reserved.</p>
+</footer>
+
+<script>
+    function slideShow() {
+        let x = document.getElementById("check-class");
+        if (x.style.display === "none" || x.style.display === "") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>
+</body>
+</html>

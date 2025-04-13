@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Exploring the Different Types of Coffee</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #3e2723;
+            background-image: url('explore background.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+        header {
+            background-color: #5d4037;
+            color: #f4f4f4;
+            text-align: center;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        section {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            color: #3e2723;
+        }
+        h2 {
+            color: #5d4037;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            transition: color 0.3s ease;
+        }
+        h2:hover {
+            color: #d7ccc8;
+        }
+        p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        .coffee-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        .coffee-type {
+            text-align: center;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            padding: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .coffee-type:hover {
+            transform: scale(1.05);
+            background-color: rgba(93, 64, 55, 0.1);
+        }
+        .coffee-type img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .coffee-type img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+        }
+        .price {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #d84315;
+            transition: color 0.3s ease;
+        }
+        .price:hover {
+            color: #ff6f00;
+        }
+        .stars {
+            display: inline-block;
+            color: #ffca28;
+            font-size: 1.1rem;
+        }
+        .stars:hover {
+            color: #ffd740;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #5d4037;
+            color: #f4f4f4;
+        }
+        footer p {
+            margin: 0;
+        }
+        .back-to-top, .back-to-home {
+            position: fixed;
+            bottom: 20px;
+            background-color: #5d4037;
+            color: #f4f4f4;
+            padding: 10px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            display: none;
+            transition: background-color 0.3s ease, opacity 0.3s ease;
+        }
+        .back-to-top:hover, .back-to-home:hover {
+            background-color: #d7ccc8;
+        }
+        .back-to-top {
+            right: 20px;
+        }
+        .back-to-home {
+            right: 70px;
+        }
+        .back-to-top.show, .back-to-home.show {
+            display: block;
+            opacity: 1;
+        }
+        .back-to-top.hide, .back-to-home.hide {
+            opacity: 0;
+        }
+        .next-page-link {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .next-page-link a {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+        }
+        .coffee-action-buttons {
+            margin-top: 1rem;
+        }
+        .add-to-cart, .buy-now {
+            padding: 0.5rem 1rem;
+            background-color: #5d4037;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0.5rem;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        .add-to-cart:hover, .buy-now:hover {
+            background-color: #d7ccc8;
+        }
+        .page-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin: 2rem auto;
+            padding: 1rem;
+            max-width: 1000px;
+        }
+        .page-navigation a {
+            background-color: #5d4037;
+            color: #f4f4f4;
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        .page-navigation a:hover {
+            background-color: #d7ccc8;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Coffee Beverages</h1>
+</header>
+
+<section>
+    <div class="coffee-grid">
+        <div class="coffee-type">
+            <h2>Espresso</h2>
+            <img src="Espresso.jpeg" alt="Espresso Coffee">
+            <p>Espresso is a strong black coffee made by forcing steam through ground coffee beans. It's the base for many coffee drinks like cappuccinos, lattes, and macchiatos.</p>
+            <div class="price">$3.00</div>
+            <div class="stars">★★★★☆</div>
+           </div>
+
+        <div class="coffee-type">
+            <h2>Americano</h2>
+            <img src="americano.jpeg" alt="Americano Coffee">
+            <p>Americano is a diluted espresso with hot water added. This makes it a lighter, smoother drink, similar to regular brewed coffee but with a distinct espresso flavor.</p>
+            <div class="price">$2.50</div>
+            <div class="stars">★★★★☆</div>
+            </div>
+
+        <div class="coffee-type">
+            <h2>Latte</h2>
+            <img src="latte.jpeg" alt="Latte Coffee">
+            <p>A latte is made by mixing espresso with steamed milk and a small layer of milk foam on top. It’s a creamy, smooth drink loved by many.</p>
+            <div class="price">$4.00</div>
+            <div class="stars">★★★★★</div>
+        </div>
+
+        <div class="coffee-type">
+            <h2>Cappuccino</h2>
+            <img src="cappuccino.jpeg" alt="Cappuccino Coffee">
+            <p>Cappuccino is made of equal parts espresso, steamed milk, and milk foam. It’s a stronger and more textured drink compared to a latte.</p>
+            <div class="price">$3.80</div>
+            <div class="stars">★★★★★</div>
+        </div>
+
+        <div class="coffee-type">
+            <h2>Mocha</h2>
+            <img src="mocha.jpeg" alt="Mocha Coffee">
+            <p>A mocha is a chocolate-flavored variant of a latte. It includes espresso, steamed milk, and chocolate syrup or cocoa powder, topped with whipped cream.</p>
+            <div class="price">$4.50</div>
+            <div class="stars">★★★★★</div>
+            </div>
+
+        <div class="coffee-type">
+            <h2>Macchiato</h2>
+            <img src="macchiato.jpeg" alt="Macchiato Coffee">
+            <p>Macchiato means "stained" in Italian. It's a shot of espresso with a small amount of steamed milk or foam on top, making it a stronger, less milky drink.</p>
+            <div class="price">$3.20</div>
+            <div class="stars">★★★★☆</div>
+            <div class="coffee-action-buttons">
+
+            </div>
+        </div>
+    </div>
+<div class="page-navigation">
+    <a href="index.html">Previous Page</a>
+    <a href="snacks and pastries.html">Next Page</a>
+</div>
+</section>
+
+<script>
+    function buyNow(coffeeName, price) {
+        alert("You have bought " + coffeeName + " for $" + price);
+    }
+</script>
+
+</body>
+</html>

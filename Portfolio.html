@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #1e3c72, #2a5298);
+      color: #ffffff;
+      line-height: 1.6;
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.2);
+      padding: 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+
+    section {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+    }
+
+    h2 {
+      color: #ffd700;
+      margin-bottom: 1rem;
+    }
+
+    .skills, .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 1.5rem;
+      border-radius: 10px;
+      transition: transform 0.3s, background-color 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: rgba(0, 0, 0, 0.2);
+      margin-top: 2rem;
+    }
+
+    a {
+      color: #ffd700;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Thanu Shree K</h1>
+    <p>Final-year CSE Student | Tech Enthusiast | Lifelong Learner</p>
+  </header>
+
+  <section>
+    <h2>About Me</h2>
+    <p>I am a final-year Computer Science student passionate about solving real-world problems using technology. I enjoy working on innovative projects, exploring new tools, and continuously growing my skillset. Currently seeking opportunities to contribute to meaningful tech solutions and grow as a developer.</p>
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <div class="skills">
+      <div class="card">Python</div>
+      <div class="card">Java</div>
+      <div class="card">HTML, CSS, JS</div>
+      <div class="card">SQL</div>
+      <div class="card">NOSQL</div>
+      <div class="card">AWS</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Projects</h2>
+    <div class="projects">
+      <div class="card">
+        <h3>Automatic traffic control</h3>
+        <p>ML and IOT project
+  Smart Traffic Control: Uses IoT and ML (SVM) to adjust signals in real-time based on traffic conditions.
+  Lidar-Based System: Detects vehicle density for efficient and adaptive   traffic management
+</p>
+      </div>
+      <div class="card">
+        <h3>Chat application </h3>
+        <p>ReactJS project
+  Built a real-time chat app using React.js and Chat Engine API, hosted on Netlify.
+ Focused on security, real-time messaging, and user-friendly design.
+</p>
+      </div>
+<div class="card">
+        <h3>Deepfake video detection</h3>
+        <p>Developed a CNN-based system to detect deepfakes with 100% accuracy using the Celeb-DF dataset it identifying fake vs real images.
+Features: Includes real-time detection via a web app, with strong  focus on accuracy, generalization, and media authenticity. 
+</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Thanu Shree K| <a href="mailto:thanushreekumar868@gmail.com">thanushreekumar868@gmail.com</a></p>
+  </footer>
+</body>
+</html>

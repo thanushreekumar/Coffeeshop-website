@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Delivery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            background-image: url('explore background.jpeg'); /* Background image */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #3e2723;
+            margin-bottom: 2rem;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        label {
+            font-weight: bold;
+            color: #3e2723;
+        }
+        input, select {
+            padding: 0.8rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 100%;
+        }
+        button {
+            background-color: #d84315;
+            color: white;
+            border: none;
+            padding: 1rem;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #bf360c;
+        }
+        .order-summary {
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: rgba(244, 244, 244, 0.9);
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+        .order-summary h3 {
+            color: #3e2723;
+        }
+        .order-summary p {
+            font-size: 1rem;
+        }
+        .total-price {
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: #d84315;
+            margin-top: 1rem;
+        }
+        p a {
+            text-decoration: none;
+            color: #d84315;
+            font-weight: bold;
+        }
+        p a:hover {
+            color: #bf360c;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Coffee Delivery</h1>
+
+        <form id="delivery-form">
+            <label for="order-type">Choose your order:</label>
+            <select id="order-type" name="order-type" required>
+                <option value="" disabled selected>Select Item</option>
+                <option value="Espresso">Espresso</option>
+                <option value="Latte">Latte</option>
+                <option value="Cappuccino">Cappuccino</option>
+                <option value="Americano">Americano</option>
+                <option value="Mocha">Mocha</option>
+                <option value="Croissant">Croissant</option>
+                <option value="Muffin">Muffin</option>
+                <option value="Scone">Scone</option>
+                <option value="Brownie">Brownie</option>
+                <option value="Cookies">Cookies</option>
+                <option value="Danish">Danish</option>
+                <option value="Organic Salad">Organic Salad</option>
+                <option value="Organic Avocado Toast">Organic Avocado Toast</option>
+                <option value="Organic Granola">Organic Granola</option>
+                <option value="Organic Fruit Bowl">Organic Fruit Bowl</option>
+                <option value="Organic Smoothie">Organic Smoothie</option>
+            </select>
+
+            <label for="size">Choose size (for drinks only):</label>
+            <select id="size" name="size">
+                <option value="" disabled selected>Select Size</option>
+                <option value="Small">Small</option>
+                <option value="Medium">Medium</option>
+                <option value="Large">Large</option>
+            </select>
+
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" min="1" value="1" required>
+
+            <label for="address">Delivery Address:</label>
+            <input type="text" id="address" name="address" placeholder="Enter delivery address" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+            <label for="delivery-time">Preferred Delivery Time:</label>
+            <input type="time" id="delivery-time" name="delivery-time" required>
+
+            <button type="submit">Place Order</button>
+        </form>
+
+        <div class="order-summary" id="order-summary" style="display: none;">
+            <h3>Order Summary</h3>
+            <p id="summary-order-type"></p>
+            <p id="summary-size"></p>
+            <p id="summary-quantity"></p>
+            <p id="summary-address"></p>
+            <p id="summary-phone"></p>
+            <p id="summary-delivery-time"></p>
+            <div class="total-price" id="total-price"></div>
+        </div>
+        <p>Suggested Order: <span id="predicted-order"></span></p>
+        <p><a href="index.html">Go Back to Home</a></p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script>
+        // Example data to train the model
+        const orderData = [
+            { orderType: 'Espresso', size: 'Small', quantity: 1, timeOfDay: 'Morning' },
+            { orderType: 'Latte', size: 'Medium', quantity: 2, timeOfDay: 'Afternoon' },
+            { orderType: 'Cappuccino', size: 'Large', quantity: 1, timeOfDay: 'Evening' },
+            { orderType: 'Mocha', size: 'Small', quantity: 1, timeOfDay: 'Morning' }
+        ];
+
+        // Convert categories to numbers for machine learning
+        const orderTypes = ['Espresso', 'Latte', 'Cappuccino', 'Mocha'];
+        const timeOfDay = ['Morning', 'Afternoon', 'Evening'];
+
+        const encodeOrderType = (orderType) => orderTypes.indexOf(orderType);
+        const encodeTimeOfDay = (time) => timeOfDay.indexOf(time);
+
+        const trainingData = orderData.map(order => ({
+            features: [encodeTimeOfDay(order.timeOfDay), order.quantity],  // Example features
+            label: encodeOrderType(order.orderType)
+        }));
+
+        const inputs = trainingData.map(data => data.features);
+        const labels = trainingData.map(data => data.label);
+
+        const xs = tf.tensor2d(inputs);
+        const ys = tf.tensor1d(labels, 'int32');
+
+        // Build the model
+        const model = tf.sequential();
+        model.add(tf.layers.dense({ units: 5, inputShape: [2], activation: 'relu' }));
+        model.add(tf.layers.dense({ units: 4, activation: 'softmax' }));
+
+        model.compile({
+            optimizer: 'adam',
+            loss: 'sparseCategoricalCrossentropy',
+            metrics: ['accuracy']
+        });
+
+        async function trainModel() {
+            await model.fit(xs, ys, {
+                epochs: 50,
+                callbacks: { onEpochEnd: (epoch, logs) => console.log('Epoch: ' + epoch + ' Loss: ' + logs.loss) }
+            });
+        }
+
+        // Train the model
+        trainModel();
+
+        // Form Submission and Order Summary
+        document.getElementById('delivery-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            // Get form values
+            const orderType = document.getElementById('order-type').value;
+            const size = document.getElementById('size').value || "N/A";
+            const quantity = parseInt(document.getElementById('quantity').value);
+            const address = document.getElementById('address').value;
+            const phone = document.getElementById('phone').value;
+            const deliveryTime = document.getElementById('delivery-time').value;
+
+            let pricePerItem;
+            if (orderType.includes("Espresso") || orderType.includes("Latte") || orderType.includes("Cappuccino") || orderType.includes("Americano") || orderType.includes("Mocha")) {
+                pricePerItem = size === 'Small' ? 2.50 : size === 'Medium' ? 3.50 : 4.50;
+            } else {
+                pricePerItem = 2.50;
+            }
+
+            const totalPrice = pricePerItem * quantity;
+
+            // Display order summary
+            document.getElementById('summary-order-type').innerText = `Item: ${orderType}`;
+            document.getElementById('summary-size').innerText = `Size: ${size}`;
+            document.getElementById('summary-quantity').innerText = `Quantity: ${quantity}`;
+            document.getElementById('summary-address').innerText = `Delivery Address: ${address}`;
+            document.getElementById('summary-phone').innerText = `Phone: ${phone}`;
+            document.getElementById('summary-delivery-time').innerText = `Delivery Time: ${deliveryTime}`;
+            document.getElementById('total-price').innerText = `Total Price: $${totalPrice.toFixed(2)}`;
+
+            // Show order summary
+            document.getElementById('order-summary').style.display = 'block';
+
+            // Predict Suggested Order
+            const inputData = [encodeTimeOfDay('Morning'), quantity]; // example input data for prediction
+            const prediction = model.predict(tf.tensor2d([inputData])).argMax(1).dataSync()[0];
+            const predictedOrder = orderTypes[prediction];
+
+            // Display the suggested order
+            document.getElementById('predicted-order').innerText = predictedOrder;
+
+            alert("Order placed successfully!");
+        });
+    </script>
+</body>
+</html>

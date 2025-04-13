@@ -1,0 +1,71 @@
+// server.js
+
+const express = require('express');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+require('dotenv').config();
+
+// Create an instance of Express
+const app = express();
+
+// Middleware
+app.use(cors());
+app.use(bodyParser.json());
+
+// MongoDB Connection
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+})
+  .then(() => console.log('MongoDB Connected'))
+  .catch((err) => console.log('Error connecting to MongoDB:', err));
+
+// Define Coffee Order Schema
+const coffeeOrderSchema = new mongoose.Schema({
+  orderType: String,
+  size: String,
+  quantity: Number,
+  address: String,
+  phone: String,
+  deliveryTime: String,
+  totalPrice: Number
+});
+
+// Create CoffeeOrder model
+const CoffeeOrder = mongoose.model('CoffeeOrder', coffeeOrderSchema);
+
+// Serve Static Files (your HTML, CSS, JS files)
+app.use(express.static('public'));  // Make sure your static files are inside a folder named 'public'
+
+// POST route to save the order
+app.post('/api/order', (req, res) => {
+  const { orderType, size, quantity, address, phone, deliveryTime, totalPrice } = req.body;
+
+  const newOrder = new CoffeeOrder({
+    orderType,
+    size,
+    quantity,
+    address,
+    phone,
+    deliveryTime,
+    totalPrice
+  });
+
+  newOrder.save()
+    .then(order => res.status(201).json(order))
+    .catch(err => res.status(400).json({ error: err.message }));
+});
+
+// GET route to retrieve all orders (optional for testing)
+app.get('/api/orders', (req, res) => {
+  CoffeeOrder.find()
+    .then(orders => res.json(orders))
+    .catch(err => res.status(400).json({ error: err.message }));
+});
+
+// Define the port to listen on
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
